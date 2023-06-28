@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #fbf8f8;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+}
+.signInForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 5px black;
+    overflow: hidden;
+    max-width: 120%;
+    margin: auto;
+    margin-top: 16%;
+    height: 400px;
+    
+}
+input{
+    border-radius: 15px;
+    padding: 10px;
+    width: 400px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    position: relative;
+}
+.checkbox{
+    margin-right: 35px;
+}
