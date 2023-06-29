@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "/home/siva/Documents/booking-app-frontend/booking/src/component/usersignin.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Signin(){
    const[name,setname]=useState('');
@@ -10,6 +11,11 @@ function Signin(){
    const[password,setpassword]=useState('')
    const[Showlogin,setShowlogin]=useState(false)
 
+   const navigate = useNavigate();
+   const servicepage = () =>{
+    navigate("/servicepage")
+   }
+
    const handlesignin = async()=>{
         await axios.post("http://localhost:5000/customersignin",{
             customerName:name,
@@ -18,6 +24,8 @@ function Signin(){
             customerGender:gender,
             customerPassword:password
         })
+        navigate("/servicepage")
+        
    }
 
     return(
@@ -28,7 +36,9 @@ function Signin(){
                     <h1>Login</h1>
                 <input type="text" className="input" placeholder="enter the name"></input>
                 <input type="password" className="input" placeholder="enter the password"></input>
-                <p>NewUser?Create Account<button>SIGN IN</button></p>
+                <p>NewUser?Create A Account<button>SIGN IN</button></p>
+                <br/>
+                <button className="loginbtn2" onClick={servicepage}>LOGIN</button>
                </form>
             ):(
                 <form className="signin">
@@ -49,7 +59,7 @@ function Signin(){
                 <button className="signinbtn" onClick={handlesignin}>sign In</button>
                 <br/>
                 <br/>
-                <p>Already Have An Account?<button className="loginbtn" onClick={()=>setShowlogin(true)}>login</button></p>
+                <p>Already Have An Account?<button className="loginbtn" onClick={()=>setShowlogin(true)}>LOGIN</button></p>
                 </form>
                 )}
            </div>
