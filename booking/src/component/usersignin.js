@@ -24,29 +24,34 @@ function Signin(){
         <React.Fragment>
            <div className="signInForm">
                 { Showlogin ?(
-                <form>
-                <input type="text" placeholder="enter the name"></input>
-                <input type="password" placeholder="enter the password"></input>
-                <p>newuser create account?<button>sign in</button></p>
+                <form className="loginfield">
+                    <h1>Login</h1>
+                <input type="text" className="input" placeholder="enter the name"></input>
+                <input type="password" className="input" placeholder="enter the password"></input>
+                <p>NewUser?Create Account<button>SIGN IN</button></p>
                </form>
             ):(
-                <form>
-                <input type="text" placeholder="enter your name" onChange={(event)=>setname(event.target.value)}></input>
-                <input type="text" placeholder="enter your phoneNo:" onChange={(event)=>setphoneno(event.target.value)}></input>
-                <input type="text" placeholder="enter your age" onChange={(event)=>setage(event.target.value)}></input>
-                <input type="password" placeholder="enter your password" onChange={(event)=>setpassword(event.target.value)}></input>
-                <label>
-                 select your gender:   
-                <input type="checkbox" value="male" className="checkbox" onChange={(event)=>setgender(event.target.value)}/> 
-                <span>Male</span>
-                <input type="checkbox" value="female" onChange={(event)=>setgender(event.target.value)}/> Female
-                </label>
+                <form className="signin">
+                    <h1>Sign In</h1>
+                <input type="text" placeholder="enter your name" className="input" onChange={(event)=>setname(event.target.value)}></input>
+                <input type="text" placeholder="enter your phoneNo:" className="input" onChange={(event)=>setphoneno(event.target.value)}></input>
+                <input type="text" placeholder="enter your age" className="input" onChange={(event)=>setage(event.target.value)}></input>
+                <input type="password" placeholder="enter your password" className="input" onChange={(event)=>setpassword(event.target.value)}></input>
+                <label className="label1">
+                 Select Your Gender: 
+                 </label>  
+                <input type="checkbox" value="male"  className="checkbox" onChange={(event)=>setgender(event.target.value)}/> 
+                <label className="label2">MALE</label>
+                <input type="checkbox" value="female" className="checkbox" onChange={(event)=>setgender(event.target.value)}/> 
+                <label className="label3">FEMALIE</label>
                 <br/>
-                <button onClick={handlesignin}>sign In</button>
-                <p>already have an account?<button onClick={()=>setShowlogin(true)}>login</button></p>
+                <br/>
+                <button className="signinbtn" onClick={handlesignin}>sign In</button>
+                <br/>
+                <br/>
+                <p>Already Have An Account?<button className="loginbtn" onClick={()=>setShowlogin(true)}>login</button></p>
                 </form>
                 )}
-                
            </div>
         </React.Fragment>
     )
