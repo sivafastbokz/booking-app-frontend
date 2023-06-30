@@ -9,59 +9,51 @@ function Signin(){
    const[age,setage]=useState('')
    const[gender,setgender]=useState('')
    const[password,setpassword]=useState('')
-   const[Showlogin,setShowlogin]=useState(false)
 
-   const navigate = useNavigate();
-   const servicepage = () =>{
-    navigate("/servicepage")
-   }
+      const navigate = useNavigate();
 
-   const handlesignin = async()=>{
-        await axios.post("http://localhost:5000/customersignin",{
-            customerName:name,
-            customerPhoneNo:phoneno,
-            customerAge:age,
-            customerGender:gender,
-            customerPassword:password
-        })
-        navigate("/servicepage")
-        
+   const handlesignin = ()=>{
+    navigate("/servicepage");
+    axios.post("http://localhost:5000/customersignin", {
+      customerName: name,
+      customerPhoneNo: phoneno,
+      customerAge: age,
+      customerGender: gender,
+      customerPassword: password,
+    }).then(() => {
+       alert("account created sucessfully") 
+    }).catch((error) => {
+      console.log(error);
+    });
+};
+
+   const loginpage=()=>{
+    navigate('/loginpage')
    }
 
     return(
         <React.Fragment>
            <div className="signInForm">
-                { Showlogin ?(
-                <form className="loginfield">
-                    <h1>Login</h1>
-                <input type="text" className="input" placeholder="enter the name"></input>
-                <input type="password" className="input" placeholder="enter the password"></input>
-                <p>NewUser?Create A Account<button>SIGN IN</button></p>
-                <br/>
-                <button className="loginbtn2" onClick={servicepage}>LOGIN</button>
-               </form>
-            ):(
                 <form className="signin">
-                    <h1>Sign In</h1>
+                    <h1>CREATE ACCOUNT</h1>
                 <input type="text" placeholder="enter your name" className="input" onChange={(event)=>setname(event.target.value)}></input>
-                <input type="text" placeholder="enter your phoneNo:" className="input" onChange={(event)=>setphoneno(event.target.value)}></input>
+                <input type="text" placeholder="enter your phoneNo" className="input" onChange={(event)=>setphoneno(event.target.value)}></input>
                 <input type="text" placeholder="enter your age" className="input" onChange={(event)=>setage(event.target.value)}></input>
                 <input type="password" placeholder="enter your password" className="input" onChange={(event)=>setpassword(event.target.value)}></input>
                 <label className="label1">
-                 Select Your Gender: 
+                 Select YourGender:  
                  </label>  
                 <input type="checkbox" value="male"  className="checkbox" onChange={(event)=>setgender(event.target.value)}/> 
                 <label className="label2">MALE</label>
                 <input type="checkbox" value="female" className="checkbox" onChange={(event)=>setgender(event.target.value)}/> 
-                <label className="label3">FEMALIE</label>
+                <label className="label3">FEMALE</label>
                 <br/>
                 <br/>
-                <button className="signinbtn" onClick={handlesignin}>sign In</button>
+                <button className="signinbtn" onClick={handlesignin}>signUp</button>
                 <br/>
                 <br/>
-                <p>Already Have An Account?<button className="loginbtn" onClick={()=>setShowlogin(true)}>LOGIN</button></p>
+                <p>Already Have An Account?<button className="loginbtn" onClick={loginpage}>LOGIN</button></p>
                 </form>
-                )}
            </div>
         </React.Fragment>
     )
