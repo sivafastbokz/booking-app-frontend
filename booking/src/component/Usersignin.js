@@ -4,18 +4,18 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Signin(){
-   const[name,setname]=useState('');
+   const[Name,setname]=useState('');
    const[phoneno,setphoneno]=useState('')
    const[age,setage]=useState('')
    const[gender,setgender]=useState('')
    const[password,setpassword]=useState('')
 
-      const navigate = useNavigate();
-
+   const navigate = useNavigate();
+   
    const handlesignin = ()=>{
     navigate("/servicepage");
     axios.post("http://localhost:5000/customersignin", {
-      customerName: name,
+      customerName: Name,
       customerPhoneNo: phoneno,
       customerAge: age,
       customerGender: gender,

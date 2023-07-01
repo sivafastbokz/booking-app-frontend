@@ -5,7 +5,6 @@ import axios from "axios";
 
 function Service(){
     const[services,setservices]=useState([]);
-
     const servicelist = () =>{
         axios.get('http://localhost:5000/servicelist').then((res)=>{
             setservices(res.data)
@@ -16,8 +15,13 @@ function Service(){
     },[])
 
     const navigate = useNavigate();
+    
     const Homepage =()=>{
         navigate("/")
+    }
+
+    const booknow=()=>{
+        navigate('/appointmentpage')
     }
 
     return(
@@ -29,13 +33,15 @@ function Service(){
                 <th>SERVICE CHARGE</th>
                 <th>ACTION</th>
             </tr>
+            
             {services.map((service,index)=>(
                 <tr key={index}>
                     <td>{service.serviceName}</td>
                     <td>{service.serviceCharge}</td>
-                    <td><button className="bookbtn">BOOK NOW!</button></td>
+                    <td><button className="bookbtn" onClick={()=>booknow(service)}>BOOK NOW!</button></td>
                 </tr>
             ))}
+            
            </table>
           <button className="btn" onClick={Homepage}>BACK TO HOME</button>
         </React.Fragment>
