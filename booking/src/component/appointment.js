@@ -12,16 +12,18 @@ function Appointment(){
         navigate('/servicepage')
     }
     
-    const conform=()=>{
-        axios.post('http://localhost:5000/appointments',{
-            appointmentBookedBy:Name,
-            appointmentBookedFor:service,
-            appointmentDate:date
-        }).then(() => {
-            alert("appointment booked sucessfully") 
-        }).catch((error) => {
-           console.log(error);
-        });
+    const conform=async(event)=>{
+        event.preventDefault()
+        try {
+            await axios.post('http://localhost:5000/appointments',{
+                appointmentBookedBy:Name,
+                appointmentBookedFor:service,
+                appointmentDate:date
+            })
+            alert("appointment booked successfully")
+        } catch (error) {
+            console.log(error)
+        }
     }
    
     return(
@@ -38,10 +40,11 @@ function Appointment(){
             <option value="Hair Straightening">Hair Straightening</option> 
             <option value="Hair Care And Washing">Hair Care And Washing</option> 
             </select>
-            <input className='input'  type='date'placeholder='enter your convenient date'onChange={(event)=>setdate(event.target.value)}></input>
+            <label className='choose'>Choose Your Convenient Date:</label>
+            <input className='input'  type='date'  onChange={(event)=>setdate(event.target.value)}></input>
             <button className='conformbtn' onClick={conform}>Conform</button>
             </form>
-          <button className='servicebtn' onClick={handleback}>back to servicepage</button>
+          <button className='servicebtn' onClick={handleback}>BACK</button>
         </React.Fragment>
     )
 }

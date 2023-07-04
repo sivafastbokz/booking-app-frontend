@@ -43,7 +43,7 @@ function Service(){
             ))}
             
            </table>
-          <button className="btn" onClick={Homepage}>BACK TO HOME</button>
+          <button className="btn" onClick={Homepage}>BACK</button>
         </React.Fragment>
     )
 }

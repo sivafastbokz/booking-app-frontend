@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "/home/siva/Documents/booking-app-frontend/booking/src/component/userlogin.css"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function Login(){
     const[loginname,setloginname]=useState('')
@@ -9,17 +10,28 @@ function Login(){
      
     const navigate = useNavigate();
 
-    const login = () => {
-        navigate("/servicepage");
-        axios.post("http://localhost:5000/customerlogin", {
-            customerName: loginname,
-            customerPassword: loginpassword,
-        }).then(() => {
-            alert("Login successful");
-        }).catch((error) => {
-            console.log(error);
-        });
-    };
+    const login = async(event)=>{
+        event.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:5000/customerlogin',{
+            customerName:loginname,
+            customerPassword:loginpassword
+       });
+        const{status,data}=response;
+        console.log(response)
+        if(status === 200){
+            const{status:loginstatus,data:token}=data;
+            if(loginstatus === 'loged in sucessfully'){
+                Cookies.set('token',token,{secure:true,sameSite:"Strict"});
+                alert('login successfull');
+                navigate(`/servicepage?name=${encodeURIComponent(loginname)}`)
+            }
+        }
+        } catch (error) {
+            console.log(error)
+            alert('invalid username or password')
+        }
+    }
   
      const signup=()=>{
         navigate('/')
