@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
 function Appointment(){
-    const[Name,setname]=useState('');
     const[service,setservices]=useState('')
     const[date,setdate]=useState('')
     const navigate = useNavigate();
@@ -16,7 +15,6 @@ function Appointment(){
         event.preventDefault()
         try {
             await axios.post('http://localhost:5000/appointments',{
-                appointmentBookedBy:Name,
                 appointmentBookedFor:service,
                 appointmentDate:date
             })
@@ -30,7 +28,7 @@ function Appointment(){
         <React.Fragment>
             <h1>Book Your Appointment NOW!</h1>
             <form className='appointmentfield'>
-            <input className='input' type='text' placeholder='enter your name'onChange={(event)=>setname(event.target.value)}></input>
+            <br/>
             <label className='choose'>Choose The Service You Want:</label>
             <select className='input'onChange={(event)=>setservices(event.target.value)}>
             <option value="Haircut">Haircut</option> 

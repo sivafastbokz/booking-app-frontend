@@ -3,6 +3,7 @@ import "/home/siva/Documents/booking-app-frontend/booking/src/component/userlogi
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import jwtDecode from 'jwt-decode';
 
 function Login(){
     const[loginname,setloginname]=useState('')
@@ -13,18 +14,21 @@ function Login(){
     const login = async(event)=>{
         event.preventDefault();
         try {
+            
             const response = await axios.post('http://localhost:5000/customerlogin',{
             customerName:loginname,
             customerPassword:loginpassword
        });
         const{status,data}=response;
-        console.log(response)
         if(status === 200){
             const{status:loginstatus,data:token}=data;
             if(loginstatus === 'loged in sucessfully'){
                 Cookies.set('token',token,{secure:true,sameSite:"Strict"});
+                localStorage.setItem('token',token)
+                const tokendecode = jwtDecode(token)
+                const sessionId = tokendecode.sessionId
                 alert('login successfull');
-                navigate(`/servicepage?name=${encodeURIComponent(loginname)}`)
+                navigate(`/servicepage?name=${encodeURIComponent(loginname)}&session=${sessionId}`)
             }
         }
         } catch (error) {

@@ -11,6 +11,7 @@ function Signin(){
    const[gender,setgender]=useState('')
    const[password,setpassword]=useState('')
    const[error,seterror]=useState('')
+   const[phoneNoError,setphonenoError]=useState('')
   
 
   const navigate = useNavigate();
@@ -22,6 +23,10 @@ function Signin(){
       return;
     }
     try {
+      if(phoneno.length !== 10){
+        setphonenoError('enter a valid phonenumber');
+        return;
+       }
       const response = await axios.post("http://localhost:5000/customersignin", {
         customerName: Name,
         customerPhoneNo: phoneno,
@@ -29,14 +34,14 @@ function Signin(){
         customerGender: gender,
         customerPassword: password,
       });
-      console.log(response.data); 
+      
       if (response.data === "user name already exists") {
          alert("Username already exists. Please choose a different name.");
          return;
        }
         else {
         alert("Account created successfully");
-        navigate(`/servicepage?name=${encodeURIComponent(Name)}`);
+        navigate(`/loginpage?name=${encodeURIComponent(Name)}`);
        }
     } catch (error) {
       console.log('something went worng');
@@ -52,7 +57,8 @@ function Signin(){
                 <form className="signin">
                     <h1>CREATE ACCOUNT</h1>
                 <input type="text" placeholder="enter your name" className="input"  onChange={(event)=>setname(event.target.value)}></input>
-                <input type="text" placeholder="enter your phoneNo" className="input"  onChange={(event)=>setphoneno(event.target.value)}></input>
+                <input type="text" placeholder="enter your phoneNo"  className="input" pattern="[0-10]"  onChange={(event)=>{setphoneno(event.target.value)}}></input>
+                {phoneNoError && <h6>{phoneNoError}</h6>}
                 <input type="number" placeholder="enter your age" className="input"  onChange={(event)=>setage(event.target.value)}></input>
                 <input type="password" placeholder="enter your password" className="input"  onChange={(event)=>setpassword(event.target.value)}></input>
                 <label className="label1">

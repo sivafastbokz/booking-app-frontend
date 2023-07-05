@@ -17,7 +17,9 @@ function Service(){
     const navigate = useNavigate();
     
     const Homepage =()=>{
+        localStorage.removeItem('token')
         navigate("/")
+
     }
 
     const booknow=()=>{
