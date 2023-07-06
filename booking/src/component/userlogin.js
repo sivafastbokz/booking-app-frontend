@@ -26,9 +26,9 @@ function Login(){
                 Cookies.set('token',token,{secure:true,sameSite:"Strict"});
                 localStorage.setItem('token',token)
                 const tokendecode = jwtDecode(token)
-                const sessionId = tokendecode.sessionId
+                const userId = tokendecode.userId
                 alert('login successfull');
-                navigate(`/servicepage?name=${encodeURIComponent(loginname)}&session=${sessionId}`)
+                navigate(`/servicepage?name=${encodeURIComponent(loginname)}&userid=${userId}`)
             }
         }
         } catch (error) {

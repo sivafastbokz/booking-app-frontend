@@ -14,14 +14,23 @@ function Appointment(){
     const conform=async(event)=>{
         event.preventDefault()
         try {
+            const token = localStorage.getItem('token');
             await axios.post('http://localhost:5000/appointments',{
                 appointmentBookedFor:service,
                 appointmentDate:date
+            },{
+                headers:{
+                    'Content-Type':'application/json',
+                     Authorization: `Bearer ${token}`
+                }
             })
             alert("appointment booked successfully")
         } catch (error) {
             console.log(error)
         }
+    }
+    const viewappointments=()=>{
+        navigate('/appointmentdetails')
     }
    
     return(
@@ -43,6 +52,7 @@ function Appointment(){
             <button className='conformbtn' onClick={conform}>Conform</button>
             </form>
           <button className='servicebtn' onClick={handleback}>BACK</button>
+          <button className='appointmentbtn'onClick={viewappointments}>View Appointments</button>
         </React.Fragment>
     )
 }
