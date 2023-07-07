@@ -17,7 +17,7 @@ function Appointment(){
             const token = localStorage.getItem('token');
             await axios.post('http://localhost:5000/appointments',{
                 appointmentBookedFor:service,
-                appointmentDate:date
+                appointmentDate:date,
             },{
                 headers:{
                     'Content-Type':'application/json',
@@ -48,7 +48,7 @@ function Appointment(){
             <option value="Hair Care And Washing">Hair Care And Washing</option> 
             </select>
             <label className='choose'>Choose Your Convenient Date:</label>
-            <input className='input'  type='date'  onChange={(event)=>setdate(event.target.value)}></input>
+            <input className='input'  type='datetime-local'  onChange={(event)=>setdate(event.target.value)}></input>
             <button className='conformbtn' onClick={conform}>Conform</button>
             </form>
           <button className='servicebtn' onClick={handleback}>BACK</button>

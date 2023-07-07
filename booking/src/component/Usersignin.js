@@ -3,7 +3,6 @@ import "/home/siva/Documents/booking-app-frontend/booking/src/component/usersign
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 function Signin(){
    const[Name,setname]=useState('');
    const[phoneno,setphoneno]=useState('')

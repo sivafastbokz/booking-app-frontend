@@ -20,7 +20,6 @@ function Apppointmentdetails(){
                 },
             });
             const appointmentList =response.data;
-            console.log(response.data)
             setappointments(appointmentList);
         } catch (error) {
             console.log(error)
@@ -36,10 +35,10 @@ function Apppointmentdetails(){
           <table>
             <tr>
                 <th>SERVICE NAME</th>
-                <th>SERVICE DATE</th>
+                <th>SERVICE DATE & TIME</th>
             </tr>
-            {appointments.map((appointment,index)=>(
-                <tr key={index}>
+            {appointments.map((appointment)=>(
+                <tr key={appointment._id}>
                     <td>{appointment.appointmentBookedFor}</td>
                     <td>{appointment.appointmentDate}</td>
                 </tr>

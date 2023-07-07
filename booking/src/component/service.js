@@ -16,7 +16,7 @@ function Service(){
 
     const navigate = useNavigate();
     
-    const Homepage =()=>{
+    const Logout =()=>{
         localStorage.removeItem('token')
         navigate("/")
 
@@ -40,12 +40,12 @@ function Service(){
                 <tr key={index}>
                     <td>{service.serviceName}</td>
                     <td>{service.serviceCharge}</td>
-                    <td><button className="bookbtn" onClick={()=>booknow(service)}>BOOK NOW!</button></td>
+                    <td><button className="bookbtn" onClick={booknow}>BOOK NOW!</button></td>
                 </tr>
             ))}
             
            </table>
-          <button className="btn" onClick={Homepage}>BACK</button>
+          <button className="btn" onClick={Logout}>LOGOUT</button>
         </React.Fragment>
     )
 }
