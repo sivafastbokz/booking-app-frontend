@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import '/home/siva/Documents/booking-app-frontend/src/Component/Service.css'
+import '/service.css'
+
 import axios from "axios";
 
 function Service(){
