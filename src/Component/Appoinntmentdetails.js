@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import '/home/siva/Documents/booking-app-frontend/src/Component/Appointmentdetails.css'
+import './appointmentDetails.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
