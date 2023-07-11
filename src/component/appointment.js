@@ -1,5 +1,5 @@
 import React, {useState}from 'react'
-import '/home/siva/Documents/booking-app-frontend/src/appointment.css'
+import '/home/siva/Documents/booking-app-frontend/src/component/appointment.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
