@@ -1,10 +1,8 @@
 import axios from "axios";
 
-const isDevelopment =true
+const isDevelopment =process.env.NODE_ENV === "development"
 
-const baseURL = isDevelopment 
-? 'http://localhost:5000'
-: 'https://booking-app-backend-2z33.onrender.com'
+const baseURL = isDevelopment ? 'http://localhost:5000':'https://booking-app-backend-2z33.onrender.com'
 console.log(baseURL)
 const AxiosClient = axios.create({
   baseURL,
