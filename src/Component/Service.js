@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import './service.css'
+import AxiosClient from "../Api";
 
-import axios from "axios";
 
 function Service(){
     const[services,setservices]=useState([]);
     const servicelist = () =>{
-        axios.get('http://localhost:5000/servicelist').then((res)=>{
+        AxiosClient.get('/servicelist').then((res)=>{
             setservices(res.data)
         })
     }

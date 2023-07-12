@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './appointmentDetails.css'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios';
+import AxiosClient from "../Api";
 
 function Apppointmentdetails(){
     const[appointments,setappointments]=useState([])
@@ -13,7 +13,7 @@ function Apppointmentdetails(){
     const appointmentDetails = async()=>{
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:5000/appointmentlist',{
+            const response = await AxiosClient.get('/appointmentlist',{
                 headers:{
                   'Content-type':'application/json',
                    Authorization: `Bearer ${token}`,

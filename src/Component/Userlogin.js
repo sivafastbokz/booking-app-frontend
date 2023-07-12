@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./userlogin.css"
-import axios from "axios";
+import AxiosClient from "../Api";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import jwtDecode from 'jwt-decode';
@@ -15,7 +15,7 @@ function Login(){
         event.preventDefault();
         try {
             
-            const response = await axios.post('http://localhost:5000/customerlogin',{
+            const response = await AxiosClient.post('/customerlogin',{
             customerName:loginname,
             customerPassword:loginpassword
        });

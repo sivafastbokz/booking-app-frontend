@@ -1,7 +1,7 @@
 import React, {useState}from 'react'
- import './appointment.css'
+import './appointment.css'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios';
+import AxiosClient from '../Api'
 
 function Appointment(){
     const[service,setservices]=useState('')
@@ -15,7 +15,7 @@ function Appointment(){
         event.preventDefault()
         try {
             const token = localStorage.getItem('token');
-            await axios.post('http://localhost:5000/appointments',{
+            await AxiosClient.post('/appointments',{
                 appointmentBookedFor:service,
                 appointmentDate:date,
             },{

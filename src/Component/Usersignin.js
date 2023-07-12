@@ -1,6 +1,6 @@
 import React, { useState } from "react";
- import "./usersignin.css";
-import axios from "axios";
+import "./usersignin.css";
+import AxiosClient from "../Api";
 import { useNavigate } from "react-router-dom";
 
 function Signin(){
@@ -26,7 +26,7 @@ function Signin(){
         setphonenoError('enter a valid phonenumber');
         return;
        }
-      const response = await axios.post("http://localhost:5000/customersignin", {
+      const response = await AxiosClient.post("/customersignin", {
         customerName: Name,
         customerPhoneNo: phoneno,
         customerAge: age,
