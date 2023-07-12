@@ -48,26 +48,23 @@ function Signin(){
     }
   };
   
-   const loginpage=()=>{
-    navigate('/loginpage')
-   }
     return(
         <React.Fragment>
-           <div className="signInForm">
-                <form className="signin">
+           <div className='signInForm'>
+                <form className='signin'>
                 <TagReUse label='CREATE ACCOUNT'/>
-                <input type="text" placeholder="enter your name" className="input"  onChange={(event)=>setname(event.target.value)}></input>
-                <input type='number' placeholder="enter your phoneNo"  className="input" pattern="[0-10]"  onChange={(event)=>{setphoneno(event.target.value)}}></input>
+                <input type='text' placeholder='enter your name' className='input'  onChange={(event)=>setname(event.target.value)}></input>
+                <input type='number' placeholder='enter your phoneNo'  className='input' pattern='[0-10]'  onChange={(event)=>{setphoneno(event.target.value)}}></input>
                 {phoneNoError && <h6>{phoneNoError}</h6>}
-                <input type="number" placeholder="enter your age" className="input"  onChange={(event)=>setage(event.target.value)}></input>
-                <input type="password" placeholder="enter your password" className="input"  onChange={(event)=>setpassword(event.target.value)}></input>
-                <label className="label1">
+                <input type='number' placeholder='enter your age' className='input'  onChange={(event)=>setage(event.target.value)}></input>
+                <input type='password' placeholder='enter your password' className='input'  onChange={(event)=>setpassword(event.target.value)}></input>
+                <label className='label1'>
                  Select YourGender:  
-                 </label>  
-                <input type="checkbox" value='male' className="checkbox"  onChange={(event)=>setgender(event.target.value)}/> 
-                <label className="label2">MALE</label>
-                <input type="checkbox" value='female' className="checkbox" onChange={(event)=>setgender(event.target.value)}/> 
-                <label className="label3">FEMALE</label>
+                </label>  
+                <input type='checkbox' value='male' className='checkbox'  onChange={(event)=>setgender(event.target.value)}/> 
+                <label className='label2'>MALE</label>
+                <input type='checkbox' value='female' className='checkbox' onChange={(event)=>setgender(event.target.value)}/> 
+                <label className='label3'>FEMALE</label>
                 <br/>
                 {error && <small>{error}</small>}
                 <br/>
@@ -75,7 +72,7 @@ function Signin(){
                 <ReUseButton onClick={handlesignin} label='SIGNUP'className='signinbtn'/>
                 <br/>
                 <br/>
-                <p>Already Have An Account?<ReUseButton onClick={loginpage} label='LOGIN' className='loginbtn'/></p>
+                <p>Already Have An Account?<ReUseButton onClick={()=>navigate('/loginpage')} label='LOGIN' className='loginbtn'/></p>
                 </form>
            </div>
         </React.Fragment>

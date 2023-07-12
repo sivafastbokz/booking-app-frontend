@@ -6,13 +6,18 @@ import ReUseButton from '../reUseComponent/ReUseButton';
 import TagReUse from '../reUseComponent/TagReUse';
 import TableReUse from '../reUseComponent/TableReUse';
 
+const table = ['SERVICE NAME','SERVICE PRICE','ACTION']
 
 function Service(){
     const[services,setservices]=useState([]);
     const servicelist = () =>{
-        AxiosClient.get('/servicelist').then((res)=>{
+        try {
+            AxiosClient.get('/servicelist').then((res)=>{
             setservices(res.data)
-        })
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
     useEffect(()=>{
        servicelist();
@@ -22,12 +27,8 @@ function Service(){
     
     const logOut =()=>{
         localStorage.removeItem('token')
-        navigate("/")
+        navigate('/')
 
-    }
-
-    const bookNow=()=>{
-        navigate('/appointmentpage')
     }
 
     return(
@@ -35,19 +36,19 @@ function Service(){
           <TagReUse label='SERVICE LIST'/>
            <table>
             <tr>
-                <TableReUse  label='SERVICE NAME'/>
-                <TableReUse  label='SERVICE CHARGE'/>
-                <TableReUse  label='ACTION'/>
+                {table.map((Heading)=>{
+                    return(
+                        <TableReUse label={Heading}/>
+                    )
+                })}
             </tr>
-            
             {services.map((service,index)=>(
                 <tr key={index}>
                     <td>{service.serviceName}</td>
                     <td>{service.serviceCharge}</td>
-                    <td><ReUseButton onClick={bookNow} className='bookbtn' label='BOOK NOW!'/></td>
+                    <td><ReUseButton onClick={()=>navigate('/appointmentpage')} className='bookbtn' label='BOOK NOW!'/></td>
                 </tr>
             ))}
-            
            </table>
           <ReUseButton className='btn' onClick={logOut} label='LOGOUT'/>
         </React.Fragment>

@@ -6,7 +6,9 @@ import ReUseButton from '../reUseComponent/ReUseButton';
 import TagReUse from '../reUseComponent/TagReUse';
 import TableReUse from '../reUseComponent/TableReUse';
 
-function Apppointmentdetails(){
+const table = ['SERVICE NAME','SERVICE DATE&TIME']
+
+function ApppointmentDetails(){
     const[appointments,setappointments]=useState([])
     const navigate = useNavigate();
     const handleback=()=>{
@@ -37,8 +39,11 @@ function Apppointmentdetails(){
           <TagReUse label='YOUR APPOINTMENTS'/>
           <table>
             <tr>
-                <TableReUse label='SERVICE NAME'/>
-                <TableReUse label='SERVICE DATE&TIME'/>
+                {table.map((Heading)=>{
+                    return(
+                     <TableReUse label={Heading}/>
+                    )
+                })}
             </tr>
             {appointments.map((appointment)=>(
                 <tr key={appointment._id}>
@@ -51,4 +56,4 @@ function Apppointmentdetails(){
         </React.Fragment>
     )
 }
-export default Apppointmentdetails;
+export default ApppointmentDetails;
