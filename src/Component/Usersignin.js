@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import "./usersignin.css";
-import AxiosClient from "../Api";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import './usersignin.css';
+import AxiosClient from '../Api';
+import { useNavigate } from 'react-router-dom';
 
 function Signin(){
    const[Name,setname]=useState('');
@@ -12,13 +12,12 @@ function Signin(){
    const[error,seterror]=useState('')
    const[phoneNoError,setphonenoError]=useState('')
   
-
   const navigate = useNavigate();
    
   const handlesignin = async (e) => {
     e.preventDefault();
     if (!Name || !phoneno || !age || !gender || !password) {
-      seterror("Please Fill In All The Fields");
+      seterror('Please Fill In All The Fields');
       return;
     }
     try {
@@ -26,7 +25,7 @@ function Signin(){
         setphonenoError('enter a valid phonenumber');
         return;
        }
-      const response = await AxiosClient.post("/customersignin", {
+      const response = await AxiosClient.post('/customersignin', {
         customerName: Name,
         customerPhoneNo: phoneno,
         customerAge: age,
@@ -34,12 +33,12 @@ function Signin(){
         customerPassword: password,
       });
       
-      if (response.data === "user name already exists") {
-         alert("Username already exists. Please choose a different name.");
+      if (response.data === 'user name already exists') {
+         alert('Username already exists. Please choose a different name.');
          return;
        }
         else {
-        alert("Account created successfully");
+        alert('Account created successfully');
         navigate(`/loginpage?name=${encodeURIComponent(Name)}`);
        }
     } catch (error) {
@@ -54,7 +53,7 @@ function Signin(){
         <React.Fragment>
            <div className="signInForm">
                 <form className="signin">
-                    <h1>CREATE ACCOUNT</h1>
+                <h1>CREATE ACCOUNT</h1>
                 <input type="text" placeholder="enter your name" className="input"  onChange={(event)=>setname(event.target.value)}></input>
                 <input type="text" placeholder="enter your phoneNo"  className="input" pattern="[0-10]"  onChange={(event)=>{setphoneno(event.target.value)}}></input>
                 {phoneNoError && <h6>{phoneNoError}</h6>}
