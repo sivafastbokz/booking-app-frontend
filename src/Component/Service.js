@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './service.css'
-import AxiosClient from "../Api";
+import AxiosClient from '../Api';
+import ReUseButton from '../reUseComponent/ReUseButton';
+import TagReUse from '../reUseComponent/TagReUse';
+import TableReUse from '../reUseComponent/TableReUse';
 
 
 function Service(){
@@ -17,36 +20,36 @@ function Service(){
 
     const navigate = useNavigate();
     
-    const Logout =()=>{
+    const logOut =()=>{
         localStorage.removeItem('token')
         navigate("/")
 
     }
 
-    const booknow=()=>{
+    const bookNow=()=>{
         navigate('/appointmentpage')
     }
 
     return(
         <React.Fragment>
-          <h1>SERVICE LIST</h1>
+          <TagReUse label='SERVICE LIST'/>
            <table>
             <tr>
-                <th>SERVICE NAME</th>
-                <th>SERVICE CHARGE</th>
-                <th>ACTION</th>
+                <TableReUse  label='SERVICE NAME'/>
+                <TableReUse  label='SERVICE CHARGE'/>
+                <TableReUse  label='ACTION'/>
             </tr>
             
             {services.map((service,index)=>(
                 <tr key={index}>
                     <td>{service.serviceName}</td>
                     <td>{service.serviceCharge}</td>
-                    <td><button className="bookbtn" onClick={booknow}>BOOK NOW!</button></td>
+                    <td><ReUseButton onClick={bookNow} className='bookbtn' label='BOOK NOW!'/></td>
                 </tr>
             ))}
             
            </table>
-          <button className="btn" onClick={Logout}>LOGOUT</button>
+          <ReUseButton className='btn' onClick={logOut} label='LOGOUT'/>
         </React.Fragment>
     )
 }

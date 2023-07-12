@@ -2,6 +2,8 @@ import React, {useState}from 'react'
 import './appointment.css'
 import { useNavigate } from 'react-router-dom'
 import AxiosClient from '../Api'
+import ReUseButton from '../reUseComponent/ReUseButton';
+import TagReUse from '../reUseComponent/TagReUse';
 
 function Appointment(){
     const[service,setservices]=useState('')
@@ -10,7 +12,7 @@ function Appointment(){
     const handleback=()=>{
         navigate('/servicepage')
     }
-    
+    console.log(service)
     const conform=async(event)=>{
         event.preventDefault()
         try {
@@ -35,11 +37,12 @@ function Appointment(){
    
     return(
         <React.Fragment>
-            <h1>Book Your Appointment NOW!</h1>
+            <TagReUse label='Book Your Appointment NOW!'/>
             <form className='appointmentfield'>
             <br/>
             <label className='choose'>Choose The Service You Want:</label>
             <select className='input'onChange={(event)=>setservices(event.target.value)}>
+            <option>Select Down The List</option>
             <option value="Haircut">Haircut</option> 
             <option value="Facial">Facial</option> 
             <option value="Massage">Massage</option> 
@@ -47,12 +50,12 @@ function Appointment(){
             <option value="Hair Straightening">Hair Straightening</option> 
             <option value="Hair Care And Washing">Hair Care And Washing</option> 
             </select>
-            <label className='choose'>Choose Your Convenient Date:</label>
+            <label className='choose'>Choose Your Date&Time:</label>
             <input className='input'  type='datetime-local'  onChange={(event)=>setdate(event.target.value)}></input>
-            <button className='conformbtn' onClick={conform}>Conform</button>
+            <ReUseButton className='conformbtn' onClick={conform} label='Conform'/>
             </form>
-          <button className='servicebtn' onClick={handleback}>BACK</button>
-          <button className='appointmentbtn'onClick={viewappointments}>View Appointments</button>
+          <ReUseButton className='servicebtn' onClick={handleback} label='BACK'/>
+          <ReUseButton className='appointmentbtn' onClick={viewappointments} label='View Appointments'/>
         </React.Fragment>
     )
 }

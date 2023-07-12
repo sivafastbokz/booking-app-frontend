@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './usersignin.css';
 import AxiosClient from '../Api';
 import { useNavigate } from 'react-router-dom';
+import ReUseButton from '../reUseComponent/ReUseButton';
+import TagReUse from '../reUseComponent/TagReUse';
 
 function Signin(){
    const[Name,setname]=useState('');
@@ -53,9 +55,9 @@ function Signin(){
         <React.Fragment>
            <div className="signInForm">
                 <form className="signin">
-                <h1>CREATE ACCOUNT</h1>
+                <TagReUse label='CREATE ACCOUNT'/>
                 <input type="text" placeholder="enter your name" className="input"  onChange={(event)=>setname(event.target.value)}></input>
-                <input type="text" placeholder="enter your phoneNo"  className="input" pattern="[0-10]"  onChange={(event)=>{setphoneno(event.target.value)}}></input>
+                <input type='number' placeholder="enter your phoneNo"  className="input" pattern="[0-10]"  onChange={(event)=>{setphoneno(event.target.value)}}></input>
                 {phoneNoError && <h6>{phoneNoError}</h6>}
                 <input type="number" placeholder="enter your age" className="input"  onChange={(event)=>setage(event.target.value)}></input>
                 <input type="password" placeholder="enter your password" className="input"  onChange={(event)=>setpassword(event.target.value)}></input>
@@ -70,10 +72,10 @@ function Signin(){
                 {error && <small>{error}</small>}
                 <br/>
                 <br/>
-                <button className="signinbtn" onClick={handlesignin}>signUp</button>
+                <ReUseButton onClick={handlesignin} label='SIGNUP'className='signinbtn'/>
                 <br/>
                 <br/>
-                <p>Already Have An Account?<button className="loginbtn" onClick={loginpage}>LOGIN</button></p>
+                <p>Already Have An Account?<ReUseButton onClick={loginpage} label='LOGIN' className='loginbtn'/></p>
                 </form>
            </div>
         </React.Fragment>

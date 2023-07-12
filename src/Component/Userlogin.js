@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import "./userlogin.css"
-import AxiosClient from "../Api";
-import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
+import React, { useState } from 'react';
+import './userlogin.css'
+import AxiosClient from '../Api';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import jwtDecode from 'jwt-decode';
+import ReUseButton from '../reUseComponent/ReUseButton';
+import TagReUse from '../reUseComponent/TagReUse';
 
 function Login(){
     const[loginname,setloginname]=useState('')
@@ -43,13 +45,13 @@ function Login(){
 
     return(
         <React.Fragment>
-            <form className="loginfield">
-                    <h1>LOGIN</h1>
-                <input type="text" className="input" placeholder="enter the name" value={loginname} onChange={(event)=>setloginname(event.target.value)}></input>
-                <input type="password" className="input" placeholder="enter the password" value={loginpassword} onChange={(event)=>setloginpassword(event.target.value)}></input>
-                <p>Don't have an account?<button onClick={signup}>SIGN UP</button></p>
+            <form className='loginfield'>
+                <TagReUse label='LOGIN'/>
+                <input type='text' className='input' placeholder='enter the name' value={loginname} onChange={(event)=>setloginname(event.target.value)}></input>
+                <input type='password' className='input' placeholder='enter the password' value={loginpassword} onChange={(event)=>setloginpassword(event.target.value)}></input>
+                <p>Don't have an account?<ReUseButton onClick={signup} label='SIGNUP'/></p>
                 <br/>
-                <button className="loginbtn2" onClick={login}>LOGIN</button>
+                <ReUseButton className='loginbtn2' onClick={login} label='LOGIN'/>
                </form>
         </React.Fragment>
     )

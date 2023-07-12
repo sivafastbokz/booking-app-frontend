@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 import './appointmentDetails.css'
 import { useNavigate } from 'react-router-dom'
-import AxiosClient from "../Api";
+import AxiosClient from '../Api';
+import ReUseButton from '../reUseComponent/ReUseButton';
+import TagReUse from '../reUseComponent/TagReUse';
+import TableReUse from '../reUseComponent/TableReUse';
 
 function Apppointmentdetails(){
     const[appointments,setappointments]=useState([])
@@ -31,11 +34,11 @@ function Apppointmentdetails(){
 
     return(
         <React.Fragment>
-          <h1>Your Appointments</h1>
+          <TagReUse label='YOUR APPOINTMENTS'/>
           <table>
             <tr>
-                <th>SERVICE NAME</th>
-                <th>SERVICE DATE & TIME</th>
+                <TableReUse label='SERVICE NAME'/>
+                <TableReUse label='SERVICE DATE&TIME'/>
             </tr>
             {appointments.map((appointment)=>(
                 <tr key={appointment._id}>
@@ -44,7 +47,7 @@ function Apppointmentdetails(){
                 </tr>
             ))}
           </table>
-          <button className="backbtn" onClick={handleback}>BACK</button>
+          <ReUseButton className='backbtn' onClick={handleback} label='BACK'/>
         </React.Fragment>
     )
 }
