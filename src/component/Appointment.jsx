@@ -1,22 +1,29 @@
 import React, {useEffect, useState}from 'react'
-import './appointment.css'
 import { useNavigate } from 'react-router-dom'
-import AxiosClient from '../Api'
+import axiosClient from '../axiosClient'
 import ReUseButton from '../reUseComponent/ReUseButton';
 import TagReUse from '../reUseComponent/TagReUse';
 import AppointmentOptionReuse from '../reUseComponent/AppointmentOptionReuse';
+import LabelReUse from '../reUseComponent/LabelReUse';
+import './appointment.css'
+
 
 function Appointment(){
-    const[service,setservices]=useState('')
-    const[date,setdate]=useState('')
-    const[appointmentData,setAppointmentData]=useState([])
+    const[service,setServices]=useState('')
+    const[date,setDate]=useState('')
+    const[serviceData,setServiceData]=useState([])
+    const[error,serError]=useState('');
     const navigate = useNavigate();
   
     const conform=async(event)=>{
         event.preventDefault()
+         if(!service ||!date){
+            serError('Please Fill In All The Fields')
+            return;
+         }
         try {
             const token = localStorage.getItem('token');
-            await AxiosClient.post('/appointments',{
+            await axiosClient.post('/appointments',{
                 appointmentBookedFor:service,
                 appointmentDate:date,
             },{
@@ -31,17 +38,17 @@ function Appointment(){
         }
     }
     
-    const appointmentlist = async()=>{
+    const serviceList = async()=>{
        try {
-        await AxiosClient.get('/servicelist').then((res)=>{
-            setAppointmentData(res.data)
+        await axiosClient.get('/servicelist').then((res)=>{
+            setServiceData(res.data)
         })
        } catch (error) {
         console.log(error)
        }
     }
     useEffect(()=>{
-        appointmentlist();
+        serviceList();
     },[])
 
     return(
@@ -49,19 +56,20 @@ function Appointment(){
             <TagReUse label='Book Your Appointment NOW!'/>
             <form className='appointmentfield'>
             <br/>
-            <label className='choose'>Choose The Service You Want:</label>
-            <select className='input'onChange={(event)=>setservices(event.target.value)}>
+            <LabelReUse className='choose' label='Choose The Service You Want:'/>
+            <select className='input'onChange={(event)=>setServices(event.target.value)} required>
                 <AppointmentOptionReuse label='Select Down The List'/>
-                {appointmentData.map((data)=>(
+                {serviceData.map((data)=>(
                 <AppointmentOptionReuse label={data.serviceName}/>
                 ))}
             </select>
-            <label className='choose'>Choose Your Date&Time:</label>
-            <input className='input'  type='datetime-local'  onChange={(event)=>setdate(event.target.value)}></input>
-            <ReUseButton className='conformbtn' onClick={conform} label='Conform'/>
+            <LabelReUse className='choose' label='Choose Your Date&Time:'/>
+            <input className='input'  type='datetime-local'  onChange={(event)=>setDate(event.target.value)} required></input>
+            {error &&<small>{error}</small>}
+            <ReUseButton className='conform-btn' onClick={conform} label='Conform'/>
             </form>
-            <ReUseButton className='servicebtn' onClick={()=>navigate('/servicepage')} label='BACK'/>
-            <ReUseButton className='appointmentbtn' onClick={()=>navigate('/appointmentdetails')} label='View Appointments'/>
+            <ReUseButton className='service-btn' onClick={()=>navigate('/servicepage')} label='BACK'/>
+            <ReUseButton className='appointment-btn' onClick={()=>navigate('/appointmentdetails')} label='View Appointments'/>
         </React.Fragment>
     )
 }

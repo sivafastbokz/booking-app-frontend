@@ -1,9 +1,9 @@
 import React from 'react';
-import Signin from './Component/Usersignin';
-import Service from './Component/Service';
-import Login from './Component/UserLogin';
-import Appointment from './Component/Appointment';
-import Apppointmentdetails from './Component/AppoinntmentDetails';
+import Signin from './component/UserSignIn';
+import Service from './component/Service';
+import Login from './component/UserLogin';
+import Appointment from './component/Appointment';
+import Apppointmentdetails from './component/AppoinntmentDetails';
 import Privateroutes from './privateroutes';
 import{BrowserRouter as Router,Route,Routes} from 'react-router-dom';
 

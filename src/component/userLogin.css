@@ -47,6 +47,10 @@
     text-align:center;
     box-shadow:0px 2px 2px black;
 }
-.loginfield.loginbtn2{
+.loginfield.login-btn2{
     margin-left: 20px;
+}
+.error-msg{
+    margin: auto;
+    margin-left: 10px;
 }

@@ -14,7 +14,7 @@ table{
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     border-collapse: collapse;
- }
+}
 
 td{
     border: 2px solid black;
@@ -34,7 +34,7 @@ tr{
     text-align: center;
     border-bottom: 1px solid #dddddd;
 }
-.bookbtn{
+.book-btn{
     font-size: 12px;
     padding: 5px;
     color: black;

@@ -51,7 +51,7 @@ body{
     font-size: large;
 }
 
-.signinbtn{
+.signin-btn{
   width:240px;
   height:35px;
   display:block;
@@ -74,7 +74,7 @@ body{
     font-style: oblique;
     font-size: large;
 }
-.loginbtn{
+.login-btn{
     margin-left: 20px;
     text-align: center;
     margin-left: 15px;

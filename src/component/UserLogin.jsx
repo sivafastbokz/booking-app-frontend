@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
-import './userlogin.css'
-import AxiosClient from '../Api';
 import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
+import axiosClient from '../axiosClient';
 import jwtDecode from 'jwt-decode';
 import ReUseButton from '../reUseComponent/ReUseButton';
 import TagReUse from '../reUseComponent/TagReUse';
+import './userLogin.css'
 
 function Login(){
-    const[loginname,setloginname]=useState('')
-    const[loginpassword,setloginpassword]=useState('')
+    const[loginname,setLoginName]=useState('')
+    const[loginpassword,setLoginPassword]=useState('')
+    const[error,setError]=useState('');
      
     const navigate = useNavigate();
 
     const login = async(event)=>{
         event.preventDefault();
+        if(!loginname||!loginpassword){
+            setError('Please Fill In All The Fields')
+            return;
+        }
         try {
-            const response = await AxiosClient.post('/customerlogin',{
+            const response = await axiosClient.post('/customerlogin',{
             customerName:loginname,
             customerPassword:loginpassword
        });
@@ -24,7 +28,6 @@ function Login(){
         if(status === 200){
             const{status:loginstatus,data:token}=data;
             if(loginstatus === 'loged in sucessfully'){
-                Cookies.set('token',token,{secure:true,sameSite:'Strict'});
                 localStorage.setItem('token',token)
                 const tokendecode = jwtDecode(token)
                 const userId = tokendecode.userId
@@ -42,12 +45,13 @@ function Login(){
         <React.Fragment>
             <form className='loginfield'>
                 <TagReUse label='LOGIN'/>
-                <input type='text' className='input' placeholder='enter the name' value={loginname} onChange={(event)=>setloginname(event.target.value)}></input>
-                <input type='password' className='input' placeholder='enter the password' value={loginpassword} onChange={(event)=>setloginpassword(event.target.value)}></input>
+                <input type='text' className='input' placeholder='enter the name' value={loginname} onChange={(event)=>setLoginName(event.target.value)}></input>
+                <input type='password' className='input' placeholder='enter the password' value={loginpassword} onChange={(event)=>setLoginPassword(event.target.value)}></input>
                 <p>Don't have an account?<ReUseButton onClick={()=>navigate('/')} label='SIGNUP'/></p>
                 <br/>
-                <ReUseButton className='loginbtn2' onClick={login} label='LOGIN'/>
-               </form>
+                <ReUseButton className='login-btn2' onClick={login} label='LOGIN'/>
+                {error&&<small className='error-msg'>{error}</small>}
+            </form>
         </React.Fragment>
     )
 }
