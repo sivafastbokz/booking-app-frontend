@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosClient from '../axiosClient';
 import ReUseButton from '../reUseComponent/ReUseButton';
@@ -13,7 +13,7 @@ function Service(){
     const[services,setServices]=useState([]);
     const[search,setSearch]=useState('');
      
-    const servicelist = (name) =>{
+    const serviceList = (name) =>{
         try {
             axiosClient.get(`/servicelist/${name}`).then((res)=>{
             setServices(res.data)
@@ -22,6 +22,19 @@ function Service(){
             console.log(error)
         }
     }
+    
+    const serviceData = ()=>{
+        try {
+            axiosClient.get('/servicelist').then((res)=>{
+                setServices(res.data)
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(()=>{
+        serviceData();
+    },[])
 
     const logOut =()=>{
         localStorage.removeItem('token')
@@ -32,7 +45,7 @@ function Service(){
     return(
         <React.Fragment>
           <TagReUse label='SERVICE LIST'/>
-          <input type='search' placeholder='search...' className='search-box' onKeyDown={()=>servicelist(search)} onChange={(event)=>setSearch(event.target.value)}></input>
+          <input type='search' placeholder='search...' className='search-box' onKeyDown={()=>serviceList(search)} onChange={(event)=>setSearch(event.target.value)}></input>
            <table>
             <tr>
                 {table.map((Heading)=>{

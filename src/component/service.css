@@ -54,6 +54,7 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
 }
 .search-box{
     border-radius: 15px;
