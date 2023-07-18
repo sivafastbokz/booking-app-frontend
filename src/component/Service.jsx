@@ -15,14 +15,21 @@ function Service(){
      
     const serviceList = (name) =>{
         try {
-            axiosClient.get(`/servicelist/${name}`).then((res)=>{
-            setServices(res.data)
-            })
+                axiosClient.get(`/servicelist/${name}`).then((res)=>{
+                    setServices(res.data)
+                })
         } catch (error) {
             console.log(error)
         }
     }
-    
+    useEffect(() => {
+        if (search === '') {
+          serviceData();
+        } else {
+          serviceList(search);
+        }
+      }, [search]);
+
     const serviceData = ()=>{
         try {
             axiosClient.get('/servicelist').then((res)=>{
