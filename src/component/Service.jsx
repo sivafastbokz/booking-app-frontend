@@ -46,7 +46,6 @@ function Service(){
         <React.Fragment>
           <TagReUse label='SERVICE LIST'/>
           <input type='search' placeholder='search...' className='search-box' value={search} onChange={(event)=>setSearch(event.target.value)}></input>
-          {/* <button className='search-btn' onClick={()=>serviceList(search)}>SEARCH</button> */}
           <ReUseButton onClick={()=>serviceList(search)} className='search-btn' label='SEARCH'/>
            <table>
             <tr>
