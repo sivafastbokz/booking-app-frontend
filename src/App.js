@@ -4,6 +4,8 @@ import Service from './component/Service';
 import Login from './component/UserLogin';
 import Appointment from './component/Appointment';
 import Apppointmentdetails from './component/AppoinntmentDetails';
+import AddService from './component/AddService';
+import UserList from './component/UserList';
 import Privateroutes from './privateroutes';
 import{BrowserRouter as Router,Route,Routes} from 'react-router-dom';
 
@@ -17,6 +19,8 @@ function App() {
              <Route path='/servicepage' element={<Service />}></Route>
              <Route path='/appointmentpage' element={<Appointment/>}></Route>
              <Route path='/appointmentdetails' element={<Apppointmentdetails/>}></Route>
+             <Route path='/addservice' element={<AddService/>}></Route>
+             <Route path='/userlist' element={<UserList/>}></Route>
             </Route>
         </Routes>
     </Router>

@@ -4,6 +4,7 @@ import axiosClient from '../axiosClient';
 import ReUseButton from '../reUseComponent/ReUseButton';
 import TagReUse from '../reUseComponent/TagReUse';
 import TableReUse from '../reUseComponent/TableReUse';
+import SideBar from './SideBar';
 import './service.css'
 
 const table = ['SERVICE NAME','SERVICE PRICE','ACTION']
@@ -51,6 +52,7 @@ function Service(){
 
     return(
         <React.Fragment>
+           <SideBar/>
           <TagReUse label='SERVICE LIST'/>
           <input type='search' placeholder='search...' className='search-box' value={search} onChange={(event)=>setSearch(event.target.value)}></input>
            <table>
