@@ -36,8 +36,8 @@ function Signin(){
         customerPassword: password,
       });
       
-      if (response.data === 'user name already exists') {
-         alert('Username already exists. Please choose a different name.');
+      if (response.data === 'phone number already exists') {
+         alert('phonenumber already exists.');
          return;
        }
         else {

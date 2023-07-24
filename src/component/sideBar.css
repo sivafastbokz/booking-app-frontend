@@ -16,16 +16,22 @@
 }
 
 .icon{
-    height: 30px;
+    height: 45px;
     width: auto;
     margin-left: 10px;
     cursor: pointer;
     background: none;
     border: none;
+    display: flex;
+    gap: 10px;
+    align-items: center;
     padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 .icon:hover{
     background-color: gainsboro;
     transition: .5s;
+}
+.icon.active{
+    background-color: gainsboro;
 }

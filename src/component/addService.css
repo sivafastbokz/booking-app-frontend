@@ -5,8 +5,8 @@
     overflow: hidden;
     max-width: 100%;
     margin: auto;
-    margin-top: 16%;
-    height: 210px;
+    margin-top: 5%;
+    max-height: 200px;
     background: #eceeee;
     border: 1px solid #42464b;
 }
@@ -42,4 +42,8 @@
 
 .error-msg{
     margin-left: 90px;
+}
+
+.container{
+    margin-bottom: 300px;
 }
