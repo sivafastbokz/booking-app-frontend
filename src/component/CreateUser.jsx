@@ -1,13 +1,14 @@
 import React from 'react';
 import SideBar from './SideBar';
-import Signin from './UserSignIn'
+import Signin from './UserSignIn';
+
 
 
 function CreateUser(){
    return(
     <React.Fragment>
       <SideBar/>
-      <Signin/>
+      <Signin />
     </React.Fragment>
    ) 
 }
