@@ -6,7 +6,7 @@ import TagReUse from '../reUseComponent/TagReUse';
 import LabelReUse from '../reUseComponent/LabelReUse';
 import './userSignIn.css';
 
-function Signin(){
+function Signin({buttonLabel='SIGNUP',navigateTo='/loginpage',style={cursor:'pointer'},stylingP={fontStyle:'oblique'}}){
   const[name,setName]=useState('');
   const[phoneno,setPhoneNo]=useState('')
   const[age,setAge]=useState('')
@@ -42,7 +42,7 @@ function Signin(){
        }
         else {
         alert('Account created successfully');
-        navigate(`/loginpage?name=${encodeURIComponent(name)}`);
+        navigate(navigateTo);
        }
     } catch (error) {
       console.log('something went worng');
@@ -68,10 +68,10 @@ function Signin(){
                 {error && <small>{error}</small>}
                 <br/>
                 <br/>
-                <ReUseButton onClick={userSignIn} label='SIGNUP'className='signin-btn'/>
+                <ReUseButton onClick={userSignIn} label={buttonLabel}  className='signin-btn'/>
                 <br/>
                 <br/>
-                <p>Already Have An Account?<ReUseButton onClick={()=>navigate('/loginpage')} label='LOGIN' className='login-btn'/></p>
+                <p style={stylingP}>Already Have An Account?<ReUseButton onClick={()=>navigate('/loginpage')} label='LOGIN' className='login-btn'style={style}/></p>
                 </form>
            </div>
         </React.Fragment>

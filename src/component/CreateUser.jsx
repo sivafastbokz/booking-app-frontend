@@ -3,12 +3,11 @@ import SideBar from './SideBar';
 import Signin from './UserSignIn';
 
 
-
 function CreateUser(){
    return(
     <React.Fragment>
       <SideBar/>
-      <Signin />
+      <Signin buttonLabel='CREATE' navigateTo='/userlist'style={{display:'none'}} stylingP={{display:'none'}}/>
     </React.Fragment>
    ) 
 }

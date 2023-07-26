@@ -1,9 +1,9 @@
 import React from 'react';
 
-function ReUseButton({onClick ,label ,className}){
+function ReUseButton({onClick ,label ,className,style}){
     return(
         <>
-         <button onClick={onClick}  className={className}>{label}</button>
+         <button onClick={onClick}  className={className} style={style}>{label}</button>
         </>
     )
 }
