@@ -48,8 +48,10 @@ tr{
     cursor: pointer;
 }
 
-h1{
-    margin-top: 180px;
+.servicelist-h1{
+    margin-top: 100px;
+    margin-left: 140px;
+    margin-bottom: 50px;
 }
 
 .search-box{

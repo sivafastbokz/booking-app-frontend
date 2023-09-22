@@ -40,7 +40,7 @@ function AddService(){
         <React.Fragment>
         <SideBar/>
         <div className='container'>
-        <TagReUse label='Add Service'/>
+        <TagReUse label='Add Service'className='addservicepage-h1'/>
         <form className='addservicefield'>
            <input type='text' className='input-box' placeholder='service name' onChange={(event)=>setServiceName(event.target.value)}></input>
            <input type='number' className='input-box' placeholder='service price'onChange={(event)=>setServicePrice(event.target.value)}></input>

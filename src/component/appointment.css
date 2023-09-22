@@ -8,11 +8,8 @@
     border-radius: 3px;
     cursor: pointer;
 }
-h1{
-    margin-bottom: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.appointmentpage-h1{
+    margin-top: 0;
 }
 .appointmentfield{
     background-color: white;

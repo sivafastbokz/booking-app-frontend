@@ -28,10 +28,6 @@ body{
     border: 1px solid #42464b;
 }
 
-.signInForm h1{
-    margin: auto;
-}
-
 .input{
     border-radius: 15px;
     padding: 10px;
@@ -100,6 +96,8 @@ h6{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
+.signin-h1{
+    margin-left: 55px
+}
 
 

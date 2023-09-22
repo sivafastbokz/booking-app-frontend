@@ -44,7 +44,7 @@ function Login(){
     return(
         <React.Fragment>
             <form className='loginfield'>
-                <TagReUse label='LOGIN'/>
+                <TagReUse label='LOGIN' className='loginpage-h1'/>
                 <input type='text' className='input' placeholder='enter the name' value={loginname} onChange={(event)=>setLoginName(event.target.value)}></input>
                 <input type='password' className='input' placeholder='enter the password' value={loginpassword} onChange={(event)=>setLoginPassword(event.target.value)}></input>
                 <p>Don't have an account?<ReUseButton onClick={()=>navigate('/')} label='SIGNUP'/></p>

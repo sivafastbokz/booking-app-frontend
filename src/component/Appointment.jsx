@@ -53,7 +53,7 @@ function Appointment(){
 
     return(
         <React.Fragment>
-            <TagReUse label='Book Your Appointment NOW!'/>
+            <TagReUse label='Book Your Appointment NOW!' className='appointmentpage-h1'/>
             <form className='appointmentfield'>
             <br/>
             <LabelReUse className='choose' label='Choose The Service You Want:'/>

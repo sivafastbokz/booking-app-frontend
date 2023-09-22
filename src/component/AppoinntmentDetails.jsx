@@ -36,7 +36,7 @@ function ApppointmentDetails(){
 
     return(
         <React.Fragment>
-          <TagReUse label='YOUR APPOINTMENTS'/>
+          <TagReUse label='YOUR APPOINTMENTS' className='appointmentdetails-h1'/>
           <table>
             <tr>
                 {table.map((Heading)=>{

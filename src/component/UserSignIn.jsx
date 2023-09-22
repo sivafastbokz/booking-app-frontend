@@ -53,7 +53,7 @@ function Signin({buttonLabel='SIGNUP',navigateTo='/loginpage',style={cursor:'poi
         <React.Fragment>
            <div className='signInForm'>
                 <form className='signin'>
-                <TagReUse label='CREATE ACCOUNT'/>
+                <TagReUse label='CREATE ACCOUNT' className='signin-h1'/>
                 <input type='text' placeholder='enter your name' className='input'  onChange={(event)=>setName(event.target.value)}></input>
                 <input type='number' placeholder='enter your phoneNo'  className='input' pattern='[0-10]'  onChange={(event)=>{setPhoneNo(event.target.value)}}></input>
                 {phoneNoError && <h6>{phoneNoError}</h6>}

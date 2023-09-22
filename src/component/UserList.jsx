@@ -27,7 +27,7 @@ function UserList(){
      <React.Fragment>
       <SideBar/>
       <div className='box'>
-       <TagReUse label='CustomerList'/>
+       <TagReUse label='CustomerList'className='userlist-h1'/>
         <table>
           <tr>
            {table.map((Heading)=>{

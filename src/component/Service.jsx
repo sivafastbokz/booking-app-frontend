@@ -53,7 +53,7 @@ function Service(){
     return(
         <React.Fragment>
            <SideBar/>
-          <TagReUse label='SERVICE LIST'/>
+          <TagReUse label='SERVICE LIST' className='servicelist-h1'/>
           <input type='search' placeholder='search...' className='search-box' value={search} onChange={(event)=>setSearch(event.target.value)}></input>
            <table>
             <tr>
